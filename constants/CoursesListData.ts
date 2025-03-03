@@ -52,3 +52,5 @@ const COURSES_DATA =[
         ],
     },
 ]
+
+export default COURSES_DATA;

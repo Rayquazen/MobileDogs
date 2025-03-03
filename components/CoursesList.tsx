@@ -10,27 +10,33 @@ interface CoursesListProps {
 
 const CoursesList = ({ title, previews }: CoursesListProps) => {
 	return (
-		<View className="my-[2rem]">
-			<View className="mb-[1rem]">
-				<Text>{title}</Text>
+		<View className="my-[1rem] ml-[0.5rem] ">
+			<View className="mb-[1rem] ">
+				<Text className="text-xl text-gray-200">{title}</Text>
 			</View>
-			<View className="">
-				<FlatList
-					data={previews}
-					showsHorizontalScrollIndicator={false}
-					keyExtractor={(item) => item.id.toString()}
-					renderItem={({ item }) => (
-						<Link href={`/courses/${item.id}`} asChild>
-							<Pressable>
-								<View className="flex-1 p-[1rem] border-b-[1px solid #ddd] border-t-[1px solid #ddd] hover:border-b-[2px solid #ddd] hover:border-t-[2px solid #ddd]">
-									<Text>{item.text}</Text>
-								</View>
-							</Pressable>
-						</Link>
-					)}
-					horizontal
-				></FlatList>
-			</View>
+			<FlatList
+				data={previews}
+				nestedScrollEnabled={true}
+				keyExtractor={(item) => item.id.toString()}
+				renderItem={({ item }) => (
+					<Link
+						href={{
+							pathname: "/courses/[itemId]",
+							params: { itemId: item.id.toString() },
+						}}
+						asChild
+					>
+						<Pressable>
+							<View className="p-[0.5rem]">
+								<Text className="border p-[0.5rem] text-gray-200">
+									{item.text}
+								</Text>
+							</View>
+						</Pressable>
+					</Link>
+				)}
+				horizontal
+			/>
 		</View>
 	);
 };

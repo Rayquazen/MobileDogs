@@ -26,7 +26,7 @@ const HomePage = () => {
 			// backgroundColor="transparent"
 			// barStyle="dark-content"
 			/>
-			<SafeAreaView className="flex-1 items-center pt-[3.5rem] justify-center">
+			<SafeAreaView className="flex-1 items-center mt-[3.5rem] justify-center">
 				<View className="">
 					<Text className="text-white font-bold text-3xl text-center">
 						Топ пород собак

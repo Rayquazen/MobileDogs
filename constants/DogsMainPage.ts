@@ -4,11 +4,14 @@ import korgi from "../assets/images/Korgi.png";
 import duchland from "../assets/images/Duchland.png";
 import beagle from "../assets/images/Bigle.png";
 
+import { ImageSourcePropType } from "react-native";
+
 export interface DogsMainPageType {
     id: number;
     title: string;
-    image: string;
+    image: ImageSourcePropType;
 }
+
 
 export const DOGSMAINPAGE_DATA: DogsMainPageType[] = [
     {
