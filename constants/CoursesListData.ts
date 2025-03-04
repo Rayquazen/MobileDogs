@@ -1,10 +1,13 @@
+import beagle from "../assets/images/Bigle.png";
+
 const COURSES_DATA =[
     {
         title: 'Первые шаги. Азы',
         data: [
             {
                 id: 1,
-                text: "Изучанем команду 'Сидеть'"
+                text: "Изучанем команду 'Сидеть'",
+                image: beagle
             },
             {
                 id: 2,

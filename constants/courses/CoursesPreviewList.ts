@@ -6,5 +6,5 @@ export interface CoursesListData{
 export interface CoursesPreviewData{
     id: number;
     text: string;
-    // image: any;
+    image: any | null;
 }

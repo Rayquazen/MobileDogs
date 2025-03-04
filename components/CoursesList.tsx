@@ -10,13 +10,14 @@ interface CoursesListProps {
 
 const CoursesList = ({ title, previews }: CoursesListProps) => {
 	return (
-		<View className="my-[1rem] ml-[0.5rem] ">
+		<View className="mt-[2rem] mb-[3rem] ml-[0.5rem] ">
 			<View className="mb-[1rem] ">
 				<Text className="text-xl text-gray-200">{title}</Text>
 			</View>
 			<FlatList
 				data={previews}
-				nestedScrollEnabled={true}
+				// nestedScrollEnabled={true}
+				showsHorizontalScrollIndicator={false}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<Link

@@ -11,13 +11,14 @@ import {
 const TabsLayout = () => {
 	return (
 		<Tabs
+			initialRouteName="index"
 			screenOptions={{
 				headerShown: false,
 				tabBarActiveTintColor: Colors.primary,
 			}}
 		>
 			<Tabs.Screen
-				name="home-page"
+				name="index"
 				options={{
 					tabBarLabel: "Главная",
 					tabBarIcon: ({ color }) => (

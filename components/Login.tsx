@@ -6,22 +6,13 @@ import {
 	SafeAreaView,
 } from "react-native";
 import React from "react";
-import "@/global.css";
-
-// import wallpaper from "@/assets/images/Kimetsu No Yaiba.jpeg";
 import CustomButton from "@/components/CustomButton";
 import { useRouter } from "expo-router";
-
-const App = () => {
+const Login = () => {
 	const router = useRouter();
 	return (
 		<View className="flex-1">
 			<ImageBackground resizeMode="cover" className="flex-1  bg-[#EAD8C0]">
-				<StatusBar
-					translucent
-					backgroundColor="transparent"
-					barStyle="dark-content"
-				/>
 				<SafeAreaView className="flex-1 justify-between items-center py-[3rem] mx-[2rem]">
 					{/* Делаем статус-бар прозрачным */}
 					<View>
@@ -38,4 +29,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default Login;

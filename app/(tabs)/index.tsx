@@ -1,3 +1,4 @@
+import "@/global.css";
 import {
 	View,
 	Text,
@@ -13,7 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { DOGSMAINPAGE_DATA } from "@/constants/DogsMainPage";
 // import DOGSMAINPAGEPICTURES from "@/constants/DogsMainPagePictures";
 
-const HomePage = () => {
+const App = () => {
 	return (
 		<View className="flex-1 bg-[#8D7B68]">
 			{/* <ImageBackground
@@ -22,9 +23,9 @@ const HomePage = () => {
 				className="flex-1 bg-[#8D7B68] "
 			> */}
 			<StatusBar
-			// translucent
-			// backgroundColor="transparent"
-			// barStyle="dark-content"
+				translucent
+				backgroundColor="transparent"
+				barStyle="dark-content"
 			/>
 			<SafeAreaView className="flex-1 items-center mt-[3.5rem] justify-center">
 				<View className="">
@@ -67,4 +68,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default App;
