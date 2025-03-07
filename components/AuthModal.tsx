@@ -6,10 +6,13 @@ import {
 	Switch,
 	Pressable,
 	TouchableOpacity,
+	Alert,
 } from "react-native";
 import Modal from "react-native-modal";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { useAuth } from "./auth-context";
+import { registerUser, loginUser } from "@/constants/authService";
+import { setTokens } from "@/constants/authStorageTokens";
 
 interface AuthModalProps {
 	isVisible: boolean;
@@ -17,22 +20,48 @@ interface AuthModalProps {
 }
 
 const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
+	///
+
 	const { login } = useAuth(); // Достаём login из контекста
 
 	const [isRegister, setIsRegister] = useState(true); // true - регистрация, false - логин
+
 	const [isEnabled, setIsEnabled] = useState(false);
 	const toggleSwitch = () => setIsEnabled((prev) => !prev);
 
-	const handleAuth = () => {
-		const userData = {
-			name: "Иван Иванов", // Здесь можно взять реальные данные из инпутов
-			email: "ivan@example.com",
-			dogBreed: "Лабрадор",
-			dogName: "Рекс",
-		};
+	const [logIn, setlogIn] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
 
-		login(userData); // Авторизуем пользователя
-		onClose(); // Закрываем модалку
+	const handleAuth = async () => {
+		if (!logIn.trim() || !password.trim()) {
+			Alert.alert("Ошибка", "Заполните все поля.");
+			return;
+		}
+
+		if (isRegister && password !== confirmPassword) {
+			Alert.alert("Ошибка", "Пароли не совпадают.");
+			return;
+		}
+
+		try {
+			if (isRegister) {
+				await registerUser(logIn, password);
+				Alert.alert(
+					"Успех",
+					"Регистрация прошла успешно. Теперь войдите в систему."
+				);
+				setIsRegister(false);
+				return;
+			}
+
+			const userData = await loginUser(logIn, password);
+			login(userData);
+			onClose();
+		} catch (error) {
+			console.error("Ошибка:", error);
+			Alert.alert("Ошибка", "Что-то пошло не так. Попробуйте ещё раз.");
+		}
 	};
 
 	return (
@@ -44,8 +73,10 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 
 				<TextInput
 					className="bg-slate-900 w-full rounded-lg border border-gray-300 px-4 py-3 mb-3 text-white"
-					placeholder="Почта"
+					placeholder="Логин"
 					placeholderTextColor="#B0B0B0"
+					value={logIn}
+					onChangeText={setlogIn} // Следим за вводом
 				/>
 
 				<TextInput
@@ -53,6 +84,8 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 					placeholder="Пароль"
 					placeholderTextColor="#B0B0B0"
 					secureTextEntry
+					value={password}
+					onChangeText={setPassword} // Следим за вводом
 				/>
 
 				{isRegister && (
@@ -61,6 +94,8 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 						placeholder="Повторите пароль"
 						placeholderTextColor="#B0B0B0"
 						secureTextEntry
+						value={confirmPassword}
+						onChangeText={setConfirmPassword} // Следим за вводом
 					/>
 				)}
 

@@ -12,9 +12,11 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { DOGSMAINPAGE_DATA } from "@/constants/DogsMainPage";
-// import DOGSMAINPAGEPICTURES from "@/constants/DogsMainPagePictures";
+
+import Constants from "expo-constants";
 
 const App = () => {
+	const API_HOST = Constants.expoConfig?.extra?.API_HOST;
 	return (
 		<View className="flex-1 bg-[#8D7B68]">
 			{/* <ImageBackground
@@ -41,7 +43,7 @@ const App = () => {
 						showsVerticalScrollIndicator={false}
 						renderItem={({ item }) => (
 							<Pressable
-								onPress={() => console.log(item.title)}
+								onPress={() => console.log(API_HOST)}
 								className="h-[15rem] w-[25rem] my-[1rem] rounded-md overflow-hidden"
 							>
 								<ImageBackground
