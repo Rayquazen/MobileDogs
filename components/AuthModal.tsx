@@ -66,7 +66,7 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 
 	return (
 		<Modal isVisible={isVisible} onBackdropPress={onClose}>
-			<View className="w-5/6 bg-slate-900 rounded-2xl p-6 self-center">
+			<View className="w-5/6 bg-slate-900 rounded-2xl p-6 self-center  ">
 				<Text className="text-center text-3xl text-gray-300 mb-4">
 					{isRegister ? "Регистрация" : "Вход"}
 				</Text>
@@ -123,7 +123,7 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 				<View className="flex-row items-center justify-center mt-4">
 					<View className="flex-1 h-px bg-gray-700" />
 					<Text className="px-3 text-sm text-gray-400">
-						{isRegister ? "Войти через соцсети" : "Войти с помощью"}
+						{isRegister ? "Регистрация через соцсети" : "Войти с помощью"}
 					</Text>
 					<View className="flex-1 h-px bg-gray-700" />
 				</View>
@@ -137,14 +137,16 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 					</TouchableOpacity>
 				</View>
 
-				<Text className=" text-gray-400 text-center">
-					{isRegister ? "Уже есть аккаунт?" : "Нет аккаунта?"}{" "}
+				<View className=" flex-row h-[2rem] text-gray-400 justify-center items-center">
+					<Text className="flex text-gray-400">
+						{isRegister ? "Уже есть аккаунт?" : "Нет аккаунта?"}{" "}
+					</Text>
 					<Pressable onPress={() => setIsRegister(!isRegister)}>
 						<Text className="text-white underline">
 							{isRegister ? "Войти" : "Регистрация"}
 						</Text>
 					</Pressable>
-				</Text>
+				</View>
 			</View>
 		</Modal>
 	);
