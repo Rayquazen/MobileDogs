@@ -2,10 +2,13 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface User {
 	name: string;
+
+	// строчку ниже заменить на email
 	logIn: string;
 	dogBreed?: string;
 	dogName?: string;
 	dogAge?: number;
+	isFormDone?: boolean;
 }
 
 interface AuthContextType {

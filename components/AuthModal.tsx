@@ -13,9 +13,13 @@ import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { useAuth } from "./auth-context";
 import { registerUser, loginUser } from "@/constants/authService";
 import { setTokens } from "@/constants/authStorageTokens";
+import { Link, router } from "expo-router";
+import InfoFormModal from "./InfoFormModal";
 
 interface AuthModalProps {
 	isVisible: boolean;
+	// isFormDone: boolean; // true - форма завершена, false - форма не завершена,
+	//  это про графу "завершенная анкета" у пользователя
 	onClose: () => void;
 }
 
@@ -58,6 +62,12 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 			const userData = await loginUser(logIn, password);
 			login(userData);
 			onClose();
+			// if (!isFormDone) {
+			// 	isVisible = false;
+			// 	<InfoFormModal isVisible={true} onClose={() => false} />;
+			// } else {
+			// 	onClose();
+			// }
 		} catch (error) {
 			console.error("Ошибка:", error);
 			Alert.alert("Ошибка", "Что-то пошло не так. Попробуйте ещё раз.");

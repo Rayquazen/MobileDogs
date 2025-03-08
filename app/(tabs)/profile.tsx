@@ -17,24 +17,30 @@ const Profile = () => {
 	const [isAuthVisible, setAuthVisible] = useState(false);
 	const [isInfoFormVisible, setInfoFormVisible] = useState(false);
 
-	// if (!isAuthenticated) {
-	// 	return (
-	// 		<SafeAreaView className="flex-1 items-center justify-center bg-gray-100">
-	// 			<Text className="text-3xl mb-4">Вы не авторизованы</Text>
-	// 			{}
-	// 			<Pressable
-	// 				className="flex p-[0.4rem] bg-blue-500 border-none rounded-lg"
-	// 				onPress={() => setAuthVisible(true)}
-	// 			>
-	// 				<Text className="text-lg">Открыть Авторизацию</Text>
-	// 			</Pressable>
-	// 			<AuthModal
-	// 				isVisible={isAuthVisible}
-	// 				onClose={() => setAuthVisible(false)}
-	// 			/>
-	// 		</SafeAreaView>
-	// 	);
-	// }
+	// Крч тут будет отслеживаться пройдена ли форма у пользователя,
+	// и при useEffect мы будем доставать данные у пользователя в столбце "пройденная анкета" true/fasle,
+	// чтобы потом через пропс прокидывать этот стейт и после логина/регистрации,
+	// если что перекидывать на заполнение, или просто выползало уведомление о анкете
+	const [isInfoFormDone, setInfoFormDone] = useState(false);
+
+	if (!isAuthenticated) {
+		return (
+			<SafeAreaView className="flex-1 items-center justify-center bg-gray-100">
+				<Text className="text-3xl mb-4">Вы не авторизованы</Text>
+				{}
+				<Pressable
+					className="flex p-[0.4rem] bg-blue-500 border-none rounded-lg"
+					onPress={() => setAuthVisible(true)}
+				>
+					<Text className="text-lg">Открыть Авторизацию</Text>
+				</Pressable>
+				<AuthModal
+					isVisible={isAuthVisible}
+					onClose={() => setAuthVisible(false)}
+				/>
+			</SafeAreaView>
+		);
+	}
 
 	return (
 		<View className="flex-1 bg-[#8D7B68]">
