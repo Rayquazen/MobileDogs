@@ -4,7 +4,8 @@ interface User {
 	name: string;
 
 	// строчку ниже заменить на email
-	logIn: string;
+
+	user_login: string;
 	dogBreed?: string;
 	dogName?: string;
 	dogAge?: number;

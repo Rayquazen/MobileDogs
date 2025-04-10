@@ -36,6 +36,7 @@ const refreshTokens = async () => {
   // Функция запросов с автообновлением токена
   export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     let accessToken = await getAccessToken();
+    console.log(accessToken);
     if (!accessToken) {
       await clearTokens();
       throw new Error("No access token available");

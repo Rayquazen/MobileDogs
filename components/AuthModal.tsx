@@ -12,9 +12,6 @@ import Modal from "react-native-modal";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { useAuth } from "./auth-context";
 import { registerUser, loginUser } from "@/constants/authService";
-import { setTokens } from "@/constants/authStorageTokens";
-import { Link, router } from "expo-router";
-import InfoFormModal from "./InfoFormModal";
 
 interface AuthModalProps {
 	isVisible: boolean;
@@ -28,7 +25,7 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 
 	const { login } = useAuth(); // Достаём login из контекста
 
-	const [isRegister, setIsRegister] = useState(true); // true - регистрация, false - логин
+	const [isRegister, setIsRegister] = useState(false); // true - регистрация, false - логин
 
 	const [isEnabled, setIsEnabled] = useState(false);
 	const toggleSwitch = () => setIsEnabled((prev) => !prev);
@@ -62,6 +59,9 @@ const AuthModal = ({ isVisible, onClose }: AuthModalProps) => {
 			const userData = await loginUser(logIn, password);
 			login(userData);
 			onClose();
+
+			// То что ниже нам на 90% не нужно будет скорее всего //
+
 			// if (!isFormDone) {
 			// 	isVisible = false;
 			// 	<InfoFormModal isVisible={true} onClose={() => false} />;

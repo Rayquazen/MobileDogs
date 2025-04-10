@@ -8,23 +8,41 @@ import {
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { CoursesPreviewData } from "@/constants/courses/CoursesPreviewList";
-import COURSES_DATA from "@/constants/CoursesListData";
+import BASECOURSES_DATA from "@/constants/courses/BaseCoursesListData";
 import { LinearGradient } from "expo-linear-gradient";
+import PROCOURSES_DATA from "@/constants/courses/ProCoursesListData";
+import MOVES_LIST_DATA from "@/constants/courses/MovesListData";
+import GENERALCOMMANDS_LIST_DATA from "@/constants/courses/GeneralCommandsListData";
 
 const CoursesPractice = () => {
-	const { itemId } = useLocalSearchParams();
+	const { itemId, fromTab } = useLocalSearchParams();
 
 	const [course, setCourse] = useState<CoursesPreviewData>();
 
 	useEffect(() => {
-		for (let idx = 0; idx < COURSES_DATA.length; idx++) {
-			const courseData = COURSES_DATA[idx].data;
+		if (fromTab === "Base") {
+			const baseCourseToStart = BASECOURSES_DATA[Number(itemId) - 1];
 
-			const courseToStart = courseData.find((e) => e.id === Number(itemId));
+			// console.log(baseCourseToStart);
+			if (baseCourseToStart) {
+				setCourse(baseCourseToStart);
+			}
+		}
+		if (fromTab === "Moves") {
+			const movesCourseToStart = MOVES_LIST_DATA[Number(itemId) - 1];
 
-			if (courseToStart) {
-				setCourse(courseToStart);
-				return;
+			// console.log(baseCourseToStart);
+			if (movesCourseToStart) {
+				setCourse(movesCourseToStart);
+			}
+		}
+		if (fromTab === "Commads") {
+			const commandsCourseToStart =
+				GENERALCOMMANDS_LIST_DATA[Number(itemId) - 1];
+
+			// console.log(baseCourseToStart);
+			if (commandsCourseToStart) {
+				setCourse(commandsCourseToStart);
 			}
 		}
 	}, []);
@@ -36,9 +54,9 @@ const CoursesPractice = () => {
 				barStyle="default"
 			/>
 			<ImageBackground
-				source={course?.image}
+				// source={course?.image}
 				resizeMode="stretch"
-				className="flex-1"
+				className="flex-1 bg-[#8D7B68]"
 			>
 				<LinearGradient
 					colors={["transparent", "rgba(0,0,0,0.9)"]}
@@ -46,7 +64,7 @@ const CoursesPractice = () => {
 				>
 					<ScrollView className="mt-[10rem]">
 						<Text className="font-bold text-xl text-white text-center">
-							Это страничка с индексом данных = {course?.text}
+							{course?.text}
 						</Text>
 					</ScrollView>
 				</LinearGradient>

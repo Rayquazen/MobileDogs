@@ -13,6 +13,22 @@ const CoursesLayout = () => {
 				name="[itemId]"
 				options={{ headerShown: false }}
 			></Stack.Screen>
+			<Stack.Screen
+				name="ProCoursesMain"
+				options={{ headerShown: false }}
+			></Stack.Screen>
+			<Stack.Screen
+				name="BaseCourses"
+				options={{ headerShown: false }}
+			></Stack.Screen>
+			<Stack.Screen
+				name="Moves"
+				options={{ headerShown: false }}
+			></Stack.Screen>
+			<Stack.Screen
+				name="GeneralCommads"
+				options={{ headerShown: false }}
+			></Stack.Screen>
 		</Stack>
 	);
 };
