@@ -8,8 +8,8 @@ const BaseCourses = () => {
 	const { fromTab } = useLocalSearchParams();
 	return (
 		<View className="flex-1 items-center justify-center bg-[#8D7B68]">
-			<Text className="text-3xl text-white text-center font-bold my-[3rem]">
-				Каталог наши курсов для начинающих хозяинов
+			<Text className="text-3xl text-white text-center font-bold mt-[3rem] mb-[1rem]">
+				Каталог наши уроков для начинающих хозяинов
 			</Text>
 
 			<ScrollView

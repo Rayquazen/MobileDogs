@@ -9,7 +9,8 @@ const GeneralCommads = () => {
 	return (
 		<View className="flex-1 items-center justify-center bg-[#8D7B68]">
 			<Text className="text-3xl text-white text-center font-bold my-[3rem]">
-				Каталог наши курсов для продвинутых хозяинов
+				Каталог наши курсов для продвинутых хозяинов:{"\n"}
+				{"\n"}Команды общего курса
 			</Text>
 
 			<ScrollView

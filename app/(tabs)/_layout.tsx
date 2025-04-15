@@ -16,6 +16,12 @@ const TabsLayout = () => {
 			}}
 		>
 			<Tabs.Screen
+				name="index"
+				options={{
+					href: null,
+				}}
+			/>
+			<Tabs.Screen
 				name="courses"
 				options={{
 					tabBarLabel: "Курсы",
@@ -25,7 +31,7 @@ const TabsLayout = () => {
 				}}
 			/>
 			<Tabs.Screen
-				name="index"
+				name="blog"
 				options={{
 					tabBarLabel: "Блог",
 					tabBarIcon: ({ color }) => (

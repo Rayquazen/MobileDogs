@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Pressable } from "react-native";
+import { View, Text, ScrollView, Pressable, StatusBar } from "react-native";
 import React from "react";
 import COURSES_DATA from "@/constants/courses/BaseCoursesListData";
 import CoursesList from "@/components/LessonsList";
@@ -7,6 +7,11 @@ import { Link } from "expo-router";
 const Courses = () => {
 	return (
 		<View className="flex-1 items-center bg-[#8D7B68]">
+			<StatusBar
+				translucent
+				backgroundColor="transparent"
+				barStyle="dark-content"
+			/>
 			<Text className="text-3xl text-white text-center font-bold ml-[0.5rem] my-[7rem]">
 				Выберите интересующий вас раздел
 			</Text>

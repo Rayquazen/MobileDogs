@@ -20,7 +20,7 @@ const CoursesList = ({ id, text, tab }: CoursesListProps) => {
 			asChild
 		>
 			<Pressable className="flex-1 h-[6rem] w-[26rem] items-center justify-center  bg-gray-300 border-2 border-gray-400 rounded-lg mb-[1rem]">
-				<View className="flex-row gap-[0.5rem] items-center justify-center ">
+				<View className="flex-row gap-[0.5rem] ">
 					<Text className="text-xl ">{id}.</Text>
 					<Text className="text-xl text-center ">{text}</Text>
 				</View>
